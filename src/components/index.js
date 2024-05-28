@@ -1,2 +1,3 @@
-export {TimeTable} from './TimeTable'
-export {GetInput} from './GetInput'
+export { Header } from "./Header"
+export { UserInput } from './UserInput'
+export { TimeTable } from './TimeTable'
