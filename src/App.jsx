@@ -7,6 +7,7 @@ import { getPrayerTime } from './api/PrayerTimeApi'
 export const Context = createContext({})
 
 function App() {
+  
   const [userInput, setUserInput] = useState({
     countryName: 'Tunisia', // for the adhen api
     countryCode: 'TN', // for the states of the country api
@@ -48,6 +49,7 @@ function App() {
       setUserInput(data=>{
         return {...data, stateName: res[0]?.name}
       })
+
     }
     getStatesOfChosenCountryCall()
   }, [userInput.countryCode])
@@ -58,61 +60,28 @@ function App() {
       const getPrayerTimeCall = async ()=>{
         const data = await getPrayerTime(userInput.countryName, userInput.stateName)
         console.log(data);
-        const res = data.data.map(dayObject=>{
+        const PreyerTimeRes = data.data.map(dayObject=>{
           return {
             date: dayObject.date.readable,
-            fajr: "5:40",
-            chourouk: "6:00",
-            dohr: "12:30",
-            aser: "16:00",
-            moghreb: "17:15",
-            ishaa: "20:00"
+            Fajr: dayObject.timings.Fajr.slice(0,5),
+            Churuk: dayObject.timings.Sunset.slice(0,5),
+            Dhuhr: dayObject.timings.Dhuhr.slice(0,5),
+            Asr: dayObject.timings.Asr.slice(0,5),
+            Maghrib: dayObject.timings.Maghrib.slice(0,5),
+            Isha:dayObject.timings.Isha.slice(0,5)
           }
         })
+        setApiCallData(data =>{
+          return {...data, preyerTimeList: PreyerTimeRes}
+        })
+
       }
       getPrayerTimeCall()
     }
   }, [userInput.stateName])
 
-  const tableHeadersList = ["date", "fajr", "chourouk", "dohr", "aser", "moghreb", "ishaa"]
-  const preyerTimeList = [
-    {
-      date: "01/01/2024",
-      fajr: "5:40",
-      chourouk: "6:00",
-      dohr: "12:30",
-      aser: "16:00",
-      moghreb: "17:15",
-      ishaa: "20:00"
-    },
-    {
-      date: "01/01/2024",
-      fajr: "5:40",
-      chourouk: "6:00",
-      dohr: "12:30",
-      aser: "16:00",
-      moghreb: "17:15",
-      ishaa: "20:00"
-    },
-    {
-      date: "01/01/2024",
-      fajr: "5:40",
-      chourouk: "6:00",
-      dohr: "12:30",
-      aser: "16:00",
-      moghreb: "17:15",
-      ishaa: "20:00"
-    },
-    {
-      date: "01/01/2024",
-      fajr: "5:40",
-      chourouk: "6:00",
-      dohr: "12:30",
-      aser: "16:00",
-      moghreb: "17:15",
-      ishaa: "20:00"
-    },
-  ]
+  const tableHeadersList = ["date","Fajr","Churuk","Dhuhr","Asr","Maghrib","Isha"]
+  
   return (
     <div>
       <Context.Provider value={{setUserInput, 
@@ -122,7 +91,7 @@ function App() {
         statesList: apiCallData.statesOfChosenCountry}}>
         <Header />
         <UserInput />
-        <TimeTable tableHeadersList={tableHeadersList} preyerTimeList={preyerTimeList}/>
+        <TimeTable tableHeadersList={tableHeadersList} preyerTimeList={apiCallData.preyerTimeList}/>
       </Context.Provider>
       
     </div>

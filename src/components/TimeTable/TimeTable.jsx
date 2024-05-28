@@ -1,12 +1,13 @@
 import React from 'react'
+import './TimeTable.css'
 
-function TimeTable({tableHeadersList, preyerTimeList}) {
+function TimeTable({preyerTimeList, tableHeadersList}) {
   return (
     <section className="time-table">
         <table>
             <thead>
                 <tr>
-                    {tableHeadersList.map((col, key)=>{
+                    {tableHeadersList?.map((col, key)=>{
                         return <th key={key}>{col}</th>
                     })}
                 </tr>
@@ -14,7 +15,7 @@ function TimeTable({tableHeadersList, preyerTimeList}) {
             </thead>
             <tbody>
                 {
-                    preyerTimeList.map((dayPreyerTime, key)=>{
+                    preyerTimeList?.map((dayPreyerTime, key)=>{
                         return <TableRow key={key} rowData={dayPreyerTime} tableHeadersList={tableHeadersList}/>
                     })
                 }
@@ -26,11 +27,11 @@ function TimeTable({tableHeadersList, preyerTimeList}) {
 
 
 const TableRow = ({rowData, tableHeadersList})=>{
-    
+    console.log(rowData);
     return (
         <tr>
             {
-                tableHeadersList.map((header, key) =>{
+                tableHeadersList?.map((header, key) =>{
                     return <td key={key}>{rowData[header]}</td>
                 })
             }
