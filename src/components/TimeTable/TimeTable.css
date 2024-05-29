@@ -1,7 +1,28 @@
 .time-table table{
     width: 100%;
+    max-width: 80rem;
 }
 
 .time-table tr{
     text-align: center;
+}
+
+.time-table{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    border-collapse: collapse;
+    
+}
+
+.highlight{
+    background-color: rgb(152, 226, 226);
+}
+
+.time-table > tr{
+    border-radius: 50px;
+}
+
+td{
+    border: 0;
 }

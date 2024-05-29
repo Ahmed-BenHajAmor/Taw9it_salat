@@ -1,7 +1,9 @@
 import React from 'react'
 import './TimeTable.css'
+import { getDate } from '../../functions/getDate'
 
 function TimeTable({preyerTimeList, tableHeadersList}) {
+    const {date} = getDate()
   return (
     <section className="time-table">
         <table>
@@ -15,8 +17,9 @@ function TimeTable({preyerTimeList, tableHeadersList}) {
             </thead>
             <tbody>
                 {
-                    preyerTimeList?.map((dayPreyerTime, key)=>{
-                        return <TableRow key={key} rowData={dayPreyerTime} tableHeadersList={tableHeadersList}/>
+                    preyerTimeList?.map((dayPreyerTime, key, index)=>{
+                        const highlighted = preyerTimeList.indexOf(dayPreyerTime) == date-1
+                        return <TableRow key={key} highlighted={highlighted} rowData={dayPreyerTime} tableHeadersList={tableHeadersList}/>
                     })
                 }
             </tbody>
@@ -26,10 +29,9 @@ function TimeTable({preyerTimeList, tableHeadersList}) {
 }
 
 
-const TableRow = ({rowData, tableHeadersList})=>{
-    console.log(rowData);
+const TableRow = ({rowData, tableHeadersList, highlighted})=>{
     return (
-        <tr>
+        <tr className={highlighted && 'highlight'}>
             {
                 tableHeadersList?.map((header, key) =>{
                     return <td key={key}>{rowData[header]}</td>

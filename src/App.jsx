@@ -59,12 +59,11 @@ function App() {
     if(userInput.stateName != ''){
       const getPrayerTimeCall = async ()=>{
         const data = await getPrayerTime(userInput.countryName, userInput.stateName)
-        console.log(data);
         const PreyerTimeRes = data.data.map(dayObject=>{
           return {
-            date: dayObject.date.readable,
+            Date: dayObject.date.readable,
             Fajr: dayObject.timings.Fajr.slice(0,5),
-            Churuk: dayObject.timings.Sunset.slice(0,5),
+            Churuk: dayObject.timings.Sunrise.slice(0,5),
             Dhuhr: dayObject.timings.Dhuhr.slice(0,5),
             Asr: dayObject.timings.Asr.slice(0,5),
             Maghrib: dayObject.timings.Maghrib.slice(0,5),
@@ -80,7 +79,7 @@ function App() {
     }
   }, [userInput.stateName])
 
-  const tableHeadersList = ["date","Fajr","Churuk","Dhuhr","Asr","Maghrib","Isha"]
+  const tableHeadersList = ["Date","Fajr","Churuk","Dhuhr","Asr","Maghrib","Isha"]
   
   return (
     <div>
