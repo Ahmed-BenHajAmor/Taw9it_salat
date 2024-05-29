@@ -1,11 +1,10 @@
 header{
-    font-size: 25px;
+    font-size: 30px;
     font-weight: 600;
     color: rgb(31, 31, 31);
     width: 100%;
     display: flex;
     justify-content: center;
-    background-color: rgb(209, 255, 255);
 }
 
 header div{
