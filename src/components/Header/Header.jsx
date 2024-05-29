@@ -1,8 +1,12 @@
 import React from 'react'
+import './Header.css'
 
 function Header() {
   return (
-    <div>Taw9it Salat</div>
+    <header>
+      <div>Taw<span>9it</span> Salat</div>
+    </header>
+    
   )
 }
 

@@ -1,0 +1,19 @@
+header{
+    font-size: 25px;
+    font-weight: 600;
+    color: rgb(31, 31, 31);
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background-color: rgb(209, 255, 255);
+}
+
+header div{
+    width: 100%;
+    max-width: 60rem;
+    text-align: center;
+    padding: 15px;
+}
+header span{
+    color: rgb(64, 64, 214);
+}

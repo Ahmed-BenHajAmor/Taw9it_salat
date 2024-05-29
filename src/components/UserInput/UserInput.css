@@ -1,0 +1,26 @@
+.user-input{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin:  15px 0 15px 0;
+    padding: 20px;
+    
+}
+.user-input > div{
+    width: 100%;
+    max-width: 60rem;
+    display: flex;
+    justify-content: space-around;
+
+}
+.input-field{
+    font-size: 20px;
+    font-weight: 500;
+    margin-right: 15px;
+}
+
+.input-field select{
+    padding: 4px;
+    width: fit-content;
+    max-width: 15rem;
+}

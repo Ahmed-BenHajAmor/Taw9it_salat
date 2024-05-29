@@ -1,28 +1,44 @@
 .time-table table{
     width: 100%;
-    max-width: 80rem;
+    max-width: 60rem;
+    border-collapse: collapse;
+    
+    
 }
 
-.time-table tr{
-    text-align: center;
-}
+
 
 .time-table{
     width: 100%;
     display: flex;
     justify-content: center;
-    border-collapse: collapse;
+    color: rgb(31, 31, 31);
+    letter-spacing: .5px;
+
     
 }
 
 .highlight{
-    background-color: rgb(152, 226, 226);
+    background-color: rgb(152, 226, 226) !important;
 }
 
-.time-table > tr{
+.time-table  tr{
+    text-align: center;
+
     border-radius: 50px;
+    border-top : 1px solid rgb(167, 167, 167);
 }
 
-td{
+.time-table td, th{
     border: 0;
+    padding: 0;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    
 }
+
+.time-table tr:hover{
+    background-color: rgb(228, 228, 228);
+}
+
+

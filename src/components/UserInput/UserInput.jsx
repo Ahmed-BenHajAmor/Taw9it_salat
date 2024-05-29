@@ -1,12 +1,16 @@
 import React, { useContext } from 'react'
 import { Context } from '../../App'
+import './UserInput.css'
 
 function UserInput() {
     const {countriesList, countryName, statesList, stateName} = useContext(Context)
   return (
     <section className="user-input">
-        <InputField fieldName={"country"} optionsList={countriesList}  value={countryName}/>
-        <InputField fieldName={"State"} optionsList={statesList} value = {stateName}/>
+        <div>
+            <InputField fieldName={"country"} optionsList={countriesList}  value={countryName}/>
+            <InputField fieldName={"state"} optionsList={statesList} value = {stateName}/>
+        </div>
+        
     </section>
   )
 }
