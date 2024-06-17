@@ -17,7 +17,7 @@ function TimeTable({preyerTimeList, tableHeadersList}) {
             </thead>
             <tbody>
                 {
-                    preyerTimeList?.map((dayPreyerTime, key, index)=>{
+                    preyerTimeList?.map((dayPreyerTime, key)=>{
                         const highlighted = preyerTimeList.indexOf(dayPreyerTime) == date-1
                         return <TableRow key={key} highlighted={highlighted} rowData={dayPreyerTime} tableHeadersList={tableHeadersList}/>
                     })
@@ -34,7 +34,7 @@ const TableRow = ({rowData, tableHeadersList, highlighted})=>{
         <tr className={highlighted && 'highlight'}>
             {
                 tableHeadersList?.map((header, key) =>{
-                    return <td key={key}>{rowData[header]}</td>
+                    return <td key={key}>{rowData[header] || "..."}</td>
                 })
             }
         </tr>

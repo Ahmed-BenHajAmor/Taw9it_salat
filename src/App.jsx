@@ -15,7 +15,15 @@ function App() {
   })
 
   const [apiCallData, setApiCallData] = useState({
-    preyerTimeList: [],
+    preyerTimeList: new Array(30).fill({
+      "Date": null,
+      "Fajr": null,
+      "Churuk": null,
+      "Dhuhr": null,
+      "Asr": null,
+      "Maghrib": null,
+      "Isha": null
+  }),
     countriesList: [],
     statesOfChosenCountry: []
   })
@@ -80,7 +88,7 @@ function App() {
   }, [userInput.stateName])
 
   const tableHeadersList = ["Date","Fajr","Churuk","Dhuhr","Asr","Maghrib","Isha"]
-  
+  console.log(apiCallData.preyerTimeList);
   return (
     <div>
       <Context.Provider value={{setUserInput, 
